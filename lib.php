@@ -2028,7 +2028,11 @@ function turnitintool_view_tiitutors($cm,$turnitintool,$tutors) {
     $table->rows[0]->cells[1] = new stdClass();
     $table->rows[0]->cells[1]->class='cell c1';
     $context = turnitintool_get_context('MODULE', $cm->id);
-    $availabletutors=get_users_by_capability($context,'mod/turnitintool:grade','u.id,u.firstname,u.lastname,u.username','','','',0,'',false);
+    // START UCLA MOD: CCLE-4440 - List of users eligible for Turnitin Tutor
+    // includes managers who inherit rights from category and system
+    //$availabletutors=get_users_by_capability($context,'mod/turnitintool:grade','u.id,u.firstname,u.lastname,u.username','','','',0,'',false);
+    $availabletutors = local_ucla_core_edit::get_course_graders($cm->course);
+    // END UCLA MOD: CCLE-4440
     $tutorselection=get_string('turnitintutorsallenrolled','turnitintool');
     foreach ($tutors->array as $value) {
         $idarray[]=(string)$value->userid;
