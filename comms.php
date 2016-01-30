@@ -97,9 +97,11 @@ class turnitintool_commclass {
             $iUln = turnitintool_pseudolastname( $iUem );
             $iUem = turnitintool_pseudoemail( $iUem );
         }
+        
+        // Set a default for first and last name in the event they are empty.
+        $this->ufn = (empty($iUfn)) ? "N/A" : $iUfn;
+        $this->uln = (empty($iUln)) ? "N/A" : $iUln;
 
-        $this->ufn=$iUfn;
-        $this->uln=$iUln;
         $this->uem=$iUem;
         $this->utp=$iUtp;
         $this->loaderbar =& $iLoaderBar;
