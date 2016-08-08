@@ -3366,7 +3366,17 @@ function turnitintool_view_all_submissions($cm,$turnitintool,$orderby='1') {
 
     $module_group = turnitintool_module_group( $cm );
     $context = turnitintool_get_context('COURSE', $turnitintool->course);
+    
+    // START UCLA MOD: CCLE-5141 Turnitin V1
+    // $studentusers = get_users_by_capability($context,'mod/turnitintool:submit','u.id,u.firstname,u.lastname','','','',$module_group,'',false);
+    $context = context_module::instance($cm->id);
     $studentusers = get_users_by_capability($context,'mod/turnitintool:submit','u.id,u.firstname,u.lastname','','','',$module_group,'',false);
+    $suser = get_suspended_userids($context);
+    foreach ($suser as $k => $v) {
+        unset($studentusers[$k]);
+    }
+    // END UCLA MOD: CCLE-5141 Turnitin V1
+    
     $studentuser_array = array_keys($studentusers);
     $scale=turnitintool_get_record('scale','id',$turnitintool->grade*-1);
     $parts=turnitintool_get_records_select('turnitintool_parts','turnitintoolid='.$turnitintool->id.' AND deleted != 1');
@@ -3449,11 +3459,19 @@ ORDER BY s.submission_grade DESC
         $turnitin_uid = ( !is_null( $record->turnitin_uid ) ) ? $record->turnitin_uid : $record->submission_nmuserid;
         $key = $record->userid . '-' . $turnitin_uid;
         $record->nonmoodle = ( $record->submission_nmuserid ) ? true : false;
-        $userrows[$key][]=$record;
-        if ( !is_null( $record->id ) ) $submissionids[] = $record->id;
-        if ( !is_null( $record->userid ) ) $subuser_array[] = $record->userid;
+        
+        // $userrows[$key][]=$record;
+        // if ( !is_null( $record->id ) ) $submissionids[] = $record->id;
+        // if ( !is_null( $record->userid ) ) $subuser_array[] = $record->userid;
+        
+        // START UCLA MOD: CCLE-5141 Turnitin V1
+        if (!in_array($record->userid, $suser)) {
+            $userrows[$key][]=$record;
+            if ( !is_null( $record->id ) ) $submissionids[] = $record->id;
+            if ( !is_null( $record->userid ) ) $subuser_array[] = $record->userid;
+        }
+        // END UCLA MOD: CCLE-5141 Turnitin V1
     }
-
     $comments = array();
     if ( count( $submissionids ) > 0 ) {
         $submission_string = join( ',', $submissionids );
@@ -3461,7 +3479,6 @@ ORDER BY s.submission_grade DESC
     }
 
     $nosubuser_array = ( !$turnitintool->shownonsubmission OR $turnitintool->anon ) ? array() : array_diff( $studentuser_array, $subuser_array );
-
     foreach ( $nosubuser_array as $user ) {
         $key = $studentusers[$user]->id . '-' . 0;
         $record = new stdClass();
@@ -3572,7 +3589,6 @@ ORDER BY s.submission_grade DESC
     if ($postdate_count == count($parts)) {
         $postdatepassed = 1;
     }
-
     foreach ( $userrows as $key => $userrow ) {
 
         if ( isset( $userrow[0]->id ) ) $overall_grade = turnitintool_overallgrade( $userrow, $turnitintool->grade, $parts, $scale );
