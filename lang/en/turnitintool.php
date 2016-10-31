@@ -133,7 +133,10 @@ $string['mins'] = 'Mins';
 $string['minutes'] = 'Minutes';
 $string['pluginname'] = 'Turnitin Assignment';
 $string['modulename'] = 'Turnitin Assignment';
-$string['modulenameplural'] = 'Turnitin Assignments';
+// START UCLA MOD: CCLE-6293-Auto-generated-link.
+// $string['modulenameplural'] = 'Turnitin Assignments';
+$string['modulenameplural'] = 'Turnitin (Legacy)';
+// END UCLA MOD: CCLE-6293.
 $string['moduleversion'] = 'Version';
 $string['moreallowed'] = 'More Allowed';
 $string['mysubmissions'] = 'My Submissions';
