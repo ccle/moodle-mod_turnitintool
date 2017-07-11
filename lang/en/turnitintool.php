@@ -131,12 +131,14 @@ $string['maxlength'] = 'The maximum length for {$a->field} is {$a->length}
 $string['maxmarks'] = 'Max Marks';
 $string['mins'] = 'Mins';
 $string['minutes'] = 'Minutes';
-$string['pluginname'] = 'Turnitin Assignment';
-$string['modulename'] = 'Turnitin Assignment';
-// START UCLA MOD: CCLE-6293-Auto-generated-link.
+// START UCLA MOD: CCLE-6694 - Rename Turnitin 2 to Turnitin.
+// $string['pluginname'] = 'Turnitin Assignment';
+// $string['modulename'] = 'Turnitin Assignment';
+$string['pluginname'] = 'Turnitin Assignment (Legacy)';
+$string['modulename'] = 'Turnitin Assignment (Legacy)';
 // $string['modulenameplural'] = 'Turnitin Assignments';
 $string['modulenameplural'] = 'Turnitin (Legacy)';
-// END UCLA MOD: CCLE-6293.
+// END UCLA MOD: CCLE-6694.
 $string['moduleversion'] = 'Version';
 $string['moreallowed'] = 'More Allowed';
 $string['mysubmissions'] = 'My Submissions';
@@ -186,7 +188,10 @@ $string['partweighterror'] = 'Part {$a} weight can not be blank<br />';
 $string['pending'] = 'Pending';
 $string['permissiondeniederror'] = 'You do not have the correct permission to complete the requested action';
 $string['pleasenote'] = 'Please Note';
-$string['pluginadministration'] = 'Turnitin Assignment Administration';
+// START UCLA MOD: CCLE-6694 - Rename Turnitin 2 to Turnitin.
+// $string['pluginadministration'] = 'Turnitin Assignment Administration';
+$string['pluginadministration'] = 'Turnitin Assignment (Legacy) Administration';
+// END UCLA MOD: CCLE-6694.
 $string['portfolio'] = 'Portfolio';
 $string['posted'] = 'Submitted';
 $string['previewtextsubmission'] = 'Preview text Submission';
@@ -318,7 +323,10 @@ $string['turnitintool:admin'] = 'Administer Turnitin Tool';
 $string['turnitintool:grade'] = 'Grade Turnitin Tool Assignments';
 $string['turnitintool:submit'] = 'Submit to Turnitin Tool Assignments';
 $string['turnitintool:view'] = 'View Turnitin Tool Assignments';
-$string['turnitintooladministration'] = 'Turnitin Assignment Administration';
+// START UCLA MOD: CCLE-6694 - Rename Turnitin 2 to Turnitin.
+// $string['turnitintooladministration'] = 'Turnitin Assignment Administration';
+$string['turnitintooladministration'] = 'Turnitin Assignment (Legacy) Administration';
+// END UCLA MOD: CCLE-6694.
 $string['turnitintoolagreement'] = 'Disclaimer / Agreement';
 $string['turnitintoolagreement_default'] = 'By checking this box, I confirm that this submission is my own work and I accept all responsibility for any copyright infringement that may occur as a result of this submission.';
 $string['turnitintoolagreement_desc'] = '<b>[Optional]</b><br />Enter an agreement confirmation statement for submissions.<br />(<b>Note:</b> If the agreement is left completely blank then no agreement confirmation will be required by students during submission)';
@@ -423,7 +431,10 @@ $string['unlinkrelinkusers'] = 'Unlink / Relink Turnitin Users';
 $string['usersunlinkrelink'] = 'Users to Unlink / Relink';
 $string['turnitinid'] = 'Turnitin ID';
 $string['defaults'] = 'Default settings';
-$string['defaults_desc'] = 'The following settings will be the default settings used for new instances of the Moodle Direct Turnitin Assignment';
+// START UCLA MOD: CCLE-6694 - Rename Turnitin 2 to Turnitin.
+// $string['defaults_desc'] = 'The following settings will be the default settings used for new instances of the Moodle Direct Turnitin Assignment';
+$string['defaults_desc'] = 'The following settings will be the default settings used for new instances of the Moodle Direct Turnitin Assignment (Legacy)';
+// END UCLA MOD: CCLE-6694.
 $string['upgradeavailable'] = 'Upgrade Available';
 $string['studentdataprivacy'] = 'Student Data Privacy Settings';
 $string['studentdataprivacy_desc'] = 'The following settings can be configured to ensure that student&#39;s personal data is not transmitted to Turnitin via the API.';
